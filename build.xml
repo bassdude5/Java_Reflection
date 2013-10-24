@@ -1,0 +1,65 @@
+<!-- ...........................................................-->
+<project name="studentOrientation" default="compile" basedir=".">
+  <!-- ...........................................................-->
+  <property name="build.compiler"              value="modern"/>
+  <property name="src"                  value="src"/>
+  <property name="BUILD"                value="build"/>
+  <property name="classes"              value="${BUILD}/classes"/>
+  <!-- ...........................................................-->
+  <!-- Removes the build directory -->
+  <!-- ...........................................................-->
+  <target name="clean">
+       <delete dir="${BUILD}"/>
+  </target>
+  <!-- ...........................................................-->
+  <!-- Creates the build target directory and the classes 
+	subdirectory -->
+  <!-- ...........................................................-->
+  <target name="prepare">
+        <mkdir dir="${BUILD}"/>
+        <mkdir dir="${classes}"/>
+  </target>
+  <!-- ...........................................................-->
+  <target name="compile"
+          depends="studentOrientation"/>
+  <!-- ...........................................................-->
+  <!-- ** means all subdirectories as well -->
+  <!-- * means all files in the current directory -->
+  <!-- for just java files use *.java -->
+  <!-- ...........................................................-->
+  <target name="studentOrientation" depends="prepare">
+    <javac srcdir="${src}"
+	   includeantruntime="false"
+           includes="studentOrientation/**"
+           excludes="**/package.html"
+           destdir="${classes}"
+           classpath="${classes}"
+           debug="on"
+           optimize="on"
+           deprecation="off"/>
+  </target>
+  <!-- ...........................................................-->
+ <target name="jar">
+        <mkdir dir="${BUILD}/jar"/>
+        <jar destfile="${BUILD}/jar/studentOrientation.jar" basedir="${BUILD}/classes">
+            <manifest>
+                <attribute name="Main-Class" value="studentOrientation.driver.Driver"/>
+            </manifest>
+        </jar>
+    </target>
+  <!-- ...........................................................-->
+  <target name="run" depends="jar">
+        <java jar="${BUILD}/jar/studentOrientation.jar"  fork="true">
+          <arg value="1"/>
+        </java>
+	
+    </target>
+  <!-- ...........................................................-->
+  <target name="archive" >
+    <mkdir dir="${BUILD}/dist"/>   
+    <tar destfile="${BUILD}/dist/studentOrientation.tar" basedir="${src}"/>
+    <gzip src="${BUILD}/dist/studentOrientation.tar" destfile="${BUILD}/dist/studentOrientation.tar.gz"/>
+ 
+  </target>
+<!-- ...........................................................-->
+</project>
