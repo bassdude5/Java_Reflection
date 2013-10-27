@@ -1,3 +1,6 @@
+import java.io.BufferedWriter;
+import java.io.IOException;
+
 public class MyAllTypesFirst
 {
 	private int myInt;
@@ -9,6 +12,13 @@ public class MyAllTypesFirst
 	public MyAllTypesFirst()
 	{
 		
+	}
+	
+	public void serialize(BufferedWriter outFile) throws IOException
+	{
+		outFile.write("<DPSerialization>");
+		outFile.write("<complexType xsi:type=\"reflection.util.MyAllTypesFirst\">");
+	
 	}
 
 	public void setMyInt(int myInt)
@@ -46,5 +56,18 @@ public class MyAllTypesFirst
 		return myString;
 	}
 
-	public double 	
+	public double getMyDouble()
+	{
+		return myDouble;
+	}
+
+	public long getMyLong()
+	{
+		return myLong;	
+	}
+	
+	public char getMyChar()
+	{	
+		return myChar;
+	}	
 }

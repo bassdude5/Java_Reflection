@@ -1,3 +1,5 @@
+import java.io.BufferedWriter;
+
 public class MyAllTypesSecond
 {
 	private int myIntS;
@@ -10,7 +12,13 @@ public class MyAllTypesSecond
 	{
 
 	}
+
+	public void serialize(BufferedWriter outFile)
+	{
+		/*outFile.write("");
+		outFile.write("");*/
 	
+	}
 	public void setMyIntS(int myIntS)
 	{
 		this.myIntS = myIntS;
@@ -27,7 +35,7 @@ public class MyAllTypesSecond
 
 	public void setMyShortS(short myShortS)
 	{
-		this.myShortS = myShorts;
+		this.myShortS = myShortS;
 	}
 
 	public void setMyChar(char myChar)
