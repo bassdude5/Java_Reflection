@@ -1,4 +1,6 @@
-
+//---------------------------------------------------------------------
+package reflection.util;
+//---------------------------------------------------------------------
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
@@ -7,7 +9,7 @@ public class Parse
 {
 	BufferedReader inputFile;
 
-	public Parse(String filename)
+	public Parse(String filename) throws FileNotFoundException
 	{
 		try
 		{
@@ -16,7 +18,7 @@ public class Parse
 		}
 		catch(FileNotFoundException e)
 		{
-			throw new ApplicationException("ERROR: File not found! " + e.toString());
+			throw new FileNotFoundException("ERROR: File not found!" + e.toString());
 		}		
 	}
 
