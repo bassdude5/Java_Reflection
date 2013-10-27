@@ -1,11 +1,17 @@
 //---------------------------------------------------------------------
 package reflection.driver;
 //---------------------------------------------------------------------
+import java.io.FileNotFoundException;
+import reflection.util.Parse;
+//---------------------------------------------------------------------
 public class Driver
 {
-	public static void main(String[] args)
+	private static final String filename = "MyAllTypes.txt";
+
+	public static void main(String[] args) throws FileNotFoundException
 	{
-		System.out.println("YAY!");
+		Parse p1 = new Parse(filename);
+		System.out.println("Driver finished execution");
 	}
 }//End of class driver
 //---------------------------------------------------------------------

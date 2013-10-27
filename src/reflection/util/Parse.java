@@ -18,7 +18,8 @@ public class Parse
 		}
 		catch(FileNotFoundException e)
 		{
-			throw new FileNotFoundException("ERROR: File not found!" + e.toString());
+			throw new FileNotFoundException("\nERROR: File not found!\n"
+			 + e.toString());
 		}		
 	}
 
