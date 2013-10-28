@@ -1,5 +1,9 @@
+//---------------------------------------------------------------------
+package reflection.util;
+//---------------------------------------------------------------------
 import java.io.BufferedWriter;
-
+import java.io.IOException;
+//---------------------------------------------------------------------
 public class MyAllTypesSecond
 {
 	private int myIntS;
@@ -8,12 +12,19 @@ public class MyAllTypesSecond
 	private short myShortS;
 	private char myChar;
 
+	/**
+	*	The null class constructor
+	**/
 	public MyAllTypesSecond()
 	{
 
 	}
 
-	public void serialize(BufferedWriter outFile)
+	/**
+	*	This method prints an instance of this object to the 
+	*	 passed BufferedWriter.
+	**/
+	public void serialize(BufferedWriter outFile) throws IOException
 	{
 		/*outFile.write("");
 		outFile.write("");*/
@@ -69,3 +80,4 @@ public class MyAllTypesSecond
 	}
 
 }
+//---------------------------------------------------------------------
