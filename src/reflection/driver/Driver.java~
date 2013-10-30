@@ -13,7 +13,7 @@ public class Driver
 	private int debug_val;
 
 	//Sets the exit value for errors
-	private static final int exit_val = 1;
+	private static final int error_val = 1;
 	
 
 	public static void main(String[] args) throws FileNotFoundException
@@ -24,7 +24,7 @@ public class Driver
 		{
 			System.out.println("ERROR: Invalid number of"
 				+ " command line arguments!");
-			System.exit(exit_val);	
+			System.exit(error_val);	
 		}
 	
 

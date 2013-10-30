@@ -1,13 +1,54 @@
-//---------------------------------------------------------------------
-package reflection.util;
-//---------------------------------------------------------------------
+package reflection.serDeser;
+
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 
-public class Parse 
+public class Deserialize
 {
-	BufferedReader inputFile;
+	private final int error_val = 2;
+
+	public	Deserialize()
+	{
+
+	}	
+
+	public Object[] DeserializeFile(String fileName) throws FileNotFoundException
+	{
+		BufferedReader br = new BufferedReader(new FileReader(fileName));
+		
+		String lineIn = " ";
+
+		while(lineIn != null)
+		{
+			try
+			{
+				lineIn = br.readLine();
+			}
+			catch(Exception e)
+			{
+				System.exit(error_val);
+			}
+			if(lineIn != null)
+			{
+
+			}
+			//if statements with pattern matching
+			//Only check for neccesary input, ignore everything else
+		}
+	
+		return null;
+	}
+
+	public Object DeserializeObj(String[] objectString)
+	{
+		//Use regular expressions in here to parse input
+
+		return null;	
+	}
+
+	/*************************************************************
+		BufferedReader inputFile;
 
 	public Parse(String filename) throws FileNotFoundException
 	{
@@ -36,7 +77,7 @@ public class Parse
 	*	@return Returns a String array with a object
 	*	 as defined in the XML format (unparsed raw text)
 	**/
-	public String[] getObjectArray()
+	/*public String[] getObjectArray()
 	{
 		//Read <DPSerialization> 
 		//Read the object type and path
@@ -51,4 +92,5 @@ public class Parse
 		return null;
 
 	}
+	*/	
 }
