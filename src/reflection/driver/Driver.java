@@ -2,13 +2,14 @@
 package reflection.driver;
 //---------------------------------------------------------------------
 import java.io.FileNotFoundException;
-import reflection.util.Parse;
 import reflection.util.Debug;
+import reflection.serDeser.Deserialize;
+import reflection.serDeser.Serialize;
 //---------------------------------------------------------------------
 public class Driver
 {
-	private static String input_filename;
-	private static String output_filename;
+	private static String inputFilename;
+	private static String outputFilename;
 
 	private int debug_val;
 
@@ -26,23 +27,26 @@ public class Driver
 				+ " command line arguments!");
 			System.exit(error_val);	
 		}
-	
 
-		input_filename = args[0];
-		//Open input file and error check
-	
-		output_filename = args[1];
-		//Open output file and error check
-		
 		//Initializes the debug class
 		Debug debug = new Debug();
-		debug.setDebugVal(Integer.parseInt(args[3]));
-				
+		debug.setDebugVal(Integer.parseInt(args[2]));	
 
-		Parse p1 = new Parse(input_filename);
+		//Sets the input filename
+		inputFilename = args[0];
+		//Open input file and error check
+		Deserialize d1 = new Deserialize(inputFilename);
+		d1.DeserializeFile();
+	
+		//Sets the output filename
+		outputFilename = args[1];
+		//Open output file and error check
+		
 		System.out.println("Driver finished execution");
 
 		//FIXME: Add an interface for both of the types?
+		//
+		//FIXME: Add toString() methods to all
 		
 	}
 }//End of class driver

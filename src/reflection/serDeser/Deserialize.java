@@ -1,22 +1,37 @@
+//---------------------------------------------------------------------
 package reflection.serDeser;
-
+//---------------------------------------------------------------------
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
-
+//---------------------------------------------------------------------
 public class Deserialize
 {
-	private final int error_val = 2;
+	private final int errorVal = 2;
 
-	public	Deserialize()
+	BufferedReader br;
+
+	public	Deserialize(String inputFilename) 
+		throws FileNotFoundException
 	{
+		try
+		{
+			br = new BufferedReader(new FileReader(inputFilename));
+		}
+		catch(FileNotFoundException e)
+		{
+			//Print the exception and the errorVal
+			System.out.println("ERROR: Unable to open file!");
+			System.exit(errorVal);	
+		}
+		finally
+		{
 
+		}
 	}	
 
-	public Object[] DeserializeFile(String fileName) throws FileNotFoundException
+	public Object[] DeserializeFile() throws FileNotFoundException
 	{
-		BufferedReader br = new BufferedReader(new FileReader(fileName));
-		
 		String lineIn = " ";
 
 		while(lineIn != null)
@@ -24,10 +39,15 @@ public class Deserialize
 			try
 			{
 				lineIn = br.readLine();
+				if(lineIn != null)
+				{
+					System.out.println(lineIn);
+				}
 			}
 			catch(Exception e)
 			{
-				System.exit(error_val);
+				System.out.println("ERROR: Unable to read line from input file!");
+				System.exit(errorVal);
 			}
 			if(lineIn != null)
 			{
@@ -93,4 +113,5 @@ public class Deserialize
 
 	}
 	*************************************************************/	
-}
+}//End of class Deserialize
+//---------------------------------------------------------------------

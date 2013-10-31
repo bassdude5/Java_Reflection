@@ -50,7 +50,12 @@
   <!-- ...........................................................-->
   <target name="run" depends="jar">
         <java jar="${BUILD}/jar/reflection.jar"  fork="true">
-          <arg value="1"/>
+	  <!-- Input Filename: -->
+          <arg value="MyAllTypes.txt"/>
+	  <!-- Output Filename: -->
+	  <arg value="OutputFileName"/>
+	  <!-- Debug Value: -->
+	  <arg value="0"/>
         </java>
 	
     </target>
