@@ -19,7 +19,7 @@ public class DeserializeTypes
 	**/
 	public int DeserializeInt(String intIn)
 	{
-		return null;
+		return 0;
 	}
 
 	/**
@@ -30,7 +30,7 @@ public class DeserializeTypes
 	**/
 	public long DeserializeLong(String longIn)
 	{
-		return null;
+		return 0;
 	}
 
 	/**
@@ -41,7 +41,7 @@ public class DeserializeTypes
 	**/
 	public double DeserializeDouble(String doubleIn)
 	{
-		return null;
+		return 0;
 	}
 
 	/**
