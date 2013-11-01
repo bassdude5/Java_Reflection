@@ -37,6 +37,12 @@ public class MyAllTypesFirst
 		outFile.write("</DPSerialization>");
 	}
 
+	@Override
+	public String toString()
+	{
+		return "toString called";
+	}
+
 	/**
 	*	This method is used to set the variable myInt
 	**/

@@ -30,6 +30,13 @@ public class MyAllTypesSecond
 		outFile.write("");*/
 	
 	}
+
+	@Override
+	public String toString()
+	{
+		return "toString called";
+	}
+
 	public void setMyIntS(int myIntS)
 	{
 		this.myIntS = myIntS;
