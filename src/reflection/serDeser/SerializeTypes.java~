@@ -17,9 +17,10 @@ public class SerializeTypes
 	*
 	*	@return This method returns the serialized int
 	**/
-	public String SerializeInt(int intIn)
+	public String SerializeInt(String intName, int intIn)
 	{
-		return null;
+		return "<"+ intName + " xsi:type=\"xsd:int\">" +
+		 intIn + "</" + intName + ">";
 	}
 	
 	/**
@@ -28,9 +29,10 @@ public class SerializeTypes
 	*
 	*	@return This method returns the serialized long
 	**/
-	public String SerializeLong(long longIn)
+	public String SerializeLong(String longName, long longIn)
 	{
-		return null;
+		return "<"+ longName + " xsi:type=\"xsd:long\">" +
+		 longIn + "</" + longName + ">";
 	}
 
 	/**
@@ -39,18 +41,29 @@ public class SerializeTypes
 	*
 	*	@return This method returns the serialized double
 	**/
-	public String SerializeDouble(double doubleIn)
+	public String SerializeDouble(String doubleName, double doubleIn)
 	{
 		return null;
 	}
 
 	/**
-	*	This metho is used to serialize a string into
+	*	This method is used to serialize a string into
 	*	 a formatted string
 	*
 	*	@return This method returns the serialized String
 	**/
-	public String SerializeString(String stringIn)
+	public String SerializeString(String stringName, String stringIn)
+	{
+		return null;
+	}
+
+	/**
+	*	This method is used to serialize a char into
+	*	 a formatted string
+	*
+	*	@return This method returns the serialized char
+	**/
+	public String SerializeChar(String charName, char charIn)
 	{
 		return null;
 	}	

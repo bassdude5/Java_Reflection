@@ -1,6 +1,12 @@
-
+//---------------------------------------------------------------------
+package reflection.util;
+//---------------------------------------------------------------------
 public abstract class AbstractMyAllTypes
 {
+	//Methods that need implemented in the subclasses
+	@Override
+	public String toString();
 
+	//Inherited methods
 
 }
