@@ -25,7 +25,7 @@ public class Debug
 	*	This method is used to get the variable debug_val
 	*	@return returns the int "debug_val"
 	**/
-	public void getDebugVal()
+	public int getDebugVal()
 	{
 		return debug_val;
 	}
