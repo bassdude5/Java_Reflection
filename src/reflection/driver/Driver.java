@@ -3,9 +3,11 @@ package reflection.driver;
 //---------------------------------------------------------------------
 import reflection.driver.Process;
 //---------------------------------------------------------------------
+import java.io.FileNotFoundException;
+//---------------------------------------------------------------------
 public class Driver
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws FileNotFoundException
 	{
 		Process p1 = new Process(args);
 		

@@ -8,7 +8,7 @@ public class SerializeTypes
 	**/
 	public SerializeTypes()
 	{
-
+		//FIXME: Combine all the methods into one?
 	}
 		
 	/**
@@ -17,10 +17,10 @@ public class SerializeTypes
 	*
 	*	@return This method returns the serialized int
 	**/
-	public String SerializeInt(String intName, int intIn)
+	public String SerializeInt(String name, int intIn)
 	{
-		return "<"+ intName + " xsi:type=\"xsd:int\">" +
-		 intIn + "</" + intName + ">";
+		return "<"+ name + " xsi:type=\"xsd:int\">" +
+		 intIn + "</" + name + ">";
 	}
 	
 	/**
@@ -29,10 +29,10 @@ public class SerializeTypes
 	*
 	*	@return This method returns the serialized long
 	**/
-	public String SerializeLong(String longName, long longIn)
+	public String SerializeLong(String name, long longIn)
 	{
-		return "<"+ longName + " xsi:type=\"xsd:long\">" +
-		 longIn + "</" + longName + ">";
+		return "<"+ name + " xsi:type=\"xsd:long\">" +
+		 longIn + "</" + name + ">";
 	}
 
 	/**
@@ -41,9 +41,10 @@ public class SerializeTypes
 	*
 	*	@return This method returns the serialized double
 	**/
-	public String SerializeDouble(String doubleName, double doubleIn)
+	public String SerializeDouble(String name, double doubleIn)
 	{
-		return null;
+		return "<"+ name + " xsi:type=\"xsd:double\">" +
+		 doubleIn + "</" + name + ">";
 	}
 
 	/**
@@ -52,9 +53,10 @@ public class SerializeTypes
 	*
 	*	@return This method returns the serialized String
 	**/
-	public String SerializeString(String stringName, String stringIn)
+	public String SerializeString(String name, String stringIn)
 	{
-		return null;
+		return "<"+ name + " xsi:type=\"xsd:string\">" +
+		 stringIn + "</" + name + ">";
 	}
 
 	/**
@@ -63,8 +65,34 @@ public class SerializeTypes
 	*
 	*	@return This method returns the serialized char
 	**/
-	public String SerializeChar(String charName, char charIn)
+	public String SerializeChar(String name, char charIn)
 	{
-		return null;
-	}	
+		return "<"+ name + " xsi:type=\"xsd:char\">" +
+		 charIn + "</" + name + ">";
+	}
+
+	/**
+	*	This method is used to serialize a float into
+	*	 a formatted string
+	*
+	*	@return This method returns the serialized float
+	**/
+	public String SerializeFloat(String name, float floatIn)
+	{
+		return "<"+ name + " xsi:type=\"xsd:float\">" +
+		 floatIn + "</" + name + ">";
+	}
+
+	/**
+	*	This method is used to serialize a short into
+	*	 a formatted string
+	*
+	*	@return This method returns the serialized short
+	**/
+	public String SerializeShort(String name, short shortIn)
+	{
+		return "<"+ name + " xsi:type=\"xsd:short\">" +
+		 shortIn + "</" + name + ">";
+	}
+
 }
