@@ -3,7 +3,7 @@ package reflection.serDeser;
 //---------------------------------------------------------------------
 import java.io.BufferedWriter;
 import java.io.FileWriter;
-import java.io.FileNotFoundException;
+import java.io.IOException;
 //---------------------------------------------------------------------
 public class Serialize
 {
@@ -13,12 +13,11 @@ public class Serialize
 	/**
 	* Serialize class constructor
 	**/
-	public Serialize(Object[] objects, String outputFilename) throws FileNotFoundException
+	public Serialize(Object[] objects, String outputFilename) throws IOException
 	{
 		this.objects = objects;
-		/*out = new BufferedWriter(
+		out = new BufferedWriter(
 			new FileWriter(outputFilename));		
-		*/
 	}
 
 	/**
@@ -28,7 +27,7 @@ public class Serialize
 	*@return Returns false if one or more objects were unable to 
 	* be parsed correctly
 	**/
-	public Boolean	SerializeAll()
+	public Boolean	SerializeAll() throws IOException
 	{
 		Boolean status = true;
 
@@ -52,22 +51,24 @@ public class Serialize
 	* This method is used to serialize one specific object
 	*
 	*@return Returns false if the object was unable to be
-	* serialized properly
+	* serialized properly, else returns true
 	**/
-	private Boolean serObj(Object obj)
+	private Boolean serObj(Object obj) throws IOException
 	{
 		Boolean status = true;
 
 		//Write the object out to the text file		
 		//return false if unable to serialize
 
-		/*out.write("<DPSerialization> ");
+		//First serialized line of an object that always
+		// needs written, reguardless of object type
+		out.write("<DPSerialization> ");
 
 		//Should call methods from the serialize types class
 	
 		//Final two lines of an object that need to be written
 		out.write(" </complexType>");
-		out.write("</DPSerialization>");*/
+		out.write("</DPSerialization>");
 
 		return status;
 	}
