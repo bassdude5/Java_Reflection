@@ -10,7 +10,7 @@ public class Driver
 	public static void main(String[] args) throws FileNotFoundException
 	{
 		Process p1 = new Process(args);
-		
+		p1.runProgram()
 
 		//Open output file and error check
 		

@@ -62,6 +62,10 @@ public class Process
 	public Boolean runProgram() throws FileNotFoundException
 	{
 		deSerFile.DeserializeFile();
+		
+		//Count the number of each object
+
+		//serFile.SerializeFile();
 
 		return true;
 	}

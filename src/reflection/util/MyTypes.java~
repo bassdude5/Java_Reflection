@@ -1,0 +1,10 @@
+//---------------------------------------------------------------------
+package reflection.util;
+//---------------------------------------------------------------------
+public interface MyTypes
+{
+	@Override
+	public String toString();
+
+	public boolean equals(Object obj);
+}

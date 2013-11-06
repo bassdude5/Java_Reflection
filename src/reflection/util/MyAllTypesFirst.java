@@ -43,6 +43,37 @@ public class MyAllTypesFirst
 		return "toString called";
 	}
 
+	
+	/**
+	*	Code partially taken from:
+	*	http://users.csc.calpoly.edu/~kmammen/documents/java/howToOverrideEquals.html
+	**/
+	public boolean equals(Object passedObj)
+	{
+		//Checks if the object exists
+		if (passedObj == null)
+		{
+			return false;
+		}
+
+		//Checks if the classes are instances of the same class
+		if (this.getClass() != passedObj.getClass())
+		{
+			return false;
+		}
+
+		/*if (this.myInt != passedObj.getMyInt()) ||
+		/*this.myString != ((Simple)passedObj).myString ||
+		this.myDouble != ((Simple)passedObj).myDouble ||
+		this.myLong != ((Simple)passedObj).myLong ||
+		this.myChar != ((Simple)passedObj).myChar)
+		{
+			return false;
+		}*/
+
+		return true;
+	}
+
 	/**
 	*	This method is used to set the variable myInt
 	**/
