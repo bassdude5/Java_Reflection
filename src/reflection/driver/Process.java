@@ -2,9 +2,14 @@
 package reflection.driver;
 //---------------------------------------------------------------------
 import java.io.FileNotFoundException;
-import reflection.util.Debug;
+import java.io.IOException;
 import reflection.serDeser.Deserialize;
 import reflection.serDeser.Serialize;
+//---------------------------------------------------------------------
+import reflection.util.MyAllTypesFirst;
+import reflection.util.MyAllTypesSecond;
+//---------------------------------------------------------------------
+import reflection.util.Debug;
 //---------------------------------------------------------------------
 public class Process
 {
@@ -20,11 +25,15 @@ public class Process
 	Deserialize deSerFile;
 	Serialize serFile;
 
+	MyAllTypesFirst types1;
+	MyAllTypesSecond types2;
+
 
 	/**
-	*	Class constructor
+	*	Class constructor that parses all input and sets
+	*	 class variables
 	**/
-	public Process(String[] args) throws FileNotFoundException
+	public Process(String[] args) throws FileNotFoundException, IOException
 	{
 		//If there were not enough args passed from the command
 		// line, the code will exit
@@ -35,11 +44,11 @@ public class Process
 			System.exit(error_val);	
 		}
 
-		//Sets the output filename
-		outputFilename = args[1];
-
 		//Sets the input filename
 		inputFilename = args[0];
+
+		//Sets the output filename
+		outputFilename = args[1];
 
 		//Initializes the debug class
 		debug = new Debug();
@@ -47,25 +56,34 @@ public class Process
 
 		//Open input file and error check
 		deSerFile = new Deserialize(debug, inputFilename);
-
-		//Open output file and error check
-		//serFile = new Serialize(debug, outputFilename);
 		
+		//Open output file and error check
+		serFile = new Serialize(debug, outputFilename, 
+			types1, types2);
 
-		//FIXME: Add an interface for both of the types?
-		//FIXME: Add toString() methods to all
+		//FIXME: Add toString() methods to all classes
 
 
 	}
 
 	//Run the 
-	public Boolean runProgram() throws FileNotFoundException
+	public Boolean runProgram() throws FileNotFoundException,
+		IOException
 	{
+		//Deserializes the file
 		deSerFile.DeserializeFile();
 		
 		//Count the number of each object
-
-		//serFile.SerializeFile();
+		if(debug.getDebugVal() == 0)
+		{
+			//Check & display unique # of class instances
+		}
+		
+		if(serFile.SerializeAll() != true)
+		{
+			System.out.println("ERROR: Some objects may" +
+				" not have been serialized succesfully!");
+		}		
 
 		return true;
 	}

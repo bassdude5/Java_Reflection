@@ -12,6 +12,8 @@ public class MyAllTypesFirst
 	private long myLong;
 	private char myChar;
 
+	private String myClassName = "MyAllTypesFirst";
+
 	/**
 	*	The null class constructor
 	**/
@@ -40,7 +42,9 @@ public class MyAllTypesFirst
 	@Override
 	public String toString()
 	{
-		return "toString called";
+		return myClassName + ": myInt = " + myInt + ", myString = "
+			+ myString + ", myDouble = " + myDouble + ", myLong = "
+			+ myLong + ", myChar = " + myChar + ".";
 	}
 
 	

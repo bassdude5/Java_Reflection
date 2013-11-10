@@ -12,6 +12,8 @@ public class MyAllTypesSecond
 	private short myShortS;
 	private char myChar;
 
+	private String myClassName = "MyAllTypesSecond";
+
 	/**
 	*	The null class constructor
 	**/
@@ -34,7 +36,9 @@ public class MyAllTypesSecond
 	@Override
 	public String toString()
 	{
-		return "toString called";
+		return myClassName + ": myIntS = " + myIntS + ", myStringS = "
+			+ myStringS + ", myFloatS = " + myFloatS + ", myShortS = "
+			+ myShortS + ", myChar = " + myChar + ".";
 	}
 
 	public void setMyIntS(int myIntS)

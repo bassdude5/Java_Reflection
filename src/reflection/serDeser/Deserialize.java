@@ -4,6 +4,7 @@ package reflection.serDeser;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
+import reflection.serDeser.DeserializeTypes;
 //---------------------------------------------------------------------
 import reflection.util.Debug;
 //---------------------------------------------------------------------
@@ -11,8 +12,9 @@ public class Deserialize
 {
 	private final int errorVal = 2;
 
-	Debug debugClass;
-	BufferedReader br;
+	private Debug debugClass;
+	private BufferedReader br;
+	private DeserializeTypes dTypes;
 
 	/**
 	*	Class constructor
@@ -23,6 +25,9 @@ public class Deserialize
 		//Sets the debug class variable 
 		this.debugClass = debugClass;
 
+		//Sets up the DeserializeTypes class
+		dTypes = new DeserializeTypes(debugClass);
+				
 		//Attempts to open the buffered reader
 		try
 		{
@@ -31,7 +36,8 @@ public class Deserialize
 		catch(FileNotFoundException e)
 		{
 			//Print the exception and the errorVal
-			System.out.println("ERROR: Unable to open input file!");
+			System.out.println("ERROR: Unable to open input file: \"" 
+				+ inputFilename + "\"");
 			System.exit(errorVal);	
 		}
 		finally
@@ -42,7 +48,7 @@ public class Deserialize
 
 	/**
 	*	This method deserializes a file and creates
-	*	 the corrisponding objects
+	*	 the objects from the data file
 	*
 	*	@return Returns an array of objects that was
 	*		 constructed from the input file
@@ -50,94 +56,53 @@ public class Deserialize
 	public Object[] DeserializeFile() throws FileNotFoundException
 	{
 		String lineIn = " ";
+		int i = 0;
+		int intVal = 0;
 
 		while(lineIn != null)
 		{
 			try
 			{
 				lineIn = br.readLine();
+				
 				if(lineIn != null)
 				{
-					System.out.println(lineIn);
-					
-					//Parse the file
+					if(i == 2)
+					{
+						intVal = dTypes.DeserializeInt(lineIn);	
+					}
+					else
+					{
+						//System.out.println(lineIn);
+					}				
 				}
 			}
 			catch(Exception e)
 			{
-				System.out.println("ERROR: Unable to read line from input file!");
+				System.out.println("ERROR: Unable to read"
+					+ " line from input file!");
 				System.exit(errorVal);
 			}
-			if(lineIn != null)
-			{
-
-			}
-			//if statements with pattern matching
-			//Only check for neccesary input, ignore everything else
+			i++;
 		}
 	
+		System.out.println("intVal value: " + intVal);
+
 		return null;
 	}
 
 	/**
-	*	This method deserializes a single object from
-	*	 the string array that is passed
-	*	
-	*	@return Returns an object that was constructed 
-	*		 from the string array
+	*	This method is used to parse a string and return 
+	*	 the string found based on the regular expression
+	*	 values passed.
+	*
+	*	@return Returns the value found as a string
 	**/
-	public Object DeserializeObj(String[] objectString)
+	public String parseValue(String inLine, String regex1, 
+		String regex2)
 	{
-		//Use regular expressions in here to parse input
-
-		return null;	
-	}
-
-	/*************************************************************
-		BufferedReader inputFile;
-
-	public Parse(String filename) throws FileNotFoundException
-	{
-		try
-		{
-			//Opens the file
-			inputFile = new BufferedReader(new FileReader(filename));
-		}
-		catch(FileNotFoundException e)
-		{
-			throw new FileNotFoundException("\nERROR: File not found!\n"
-			 + e.toString());
-		}		
-	}
-
-	public Boolean parseAll()
-	{
-		
-		return true;
-	}
-
-	/**
-	*	This method gets the next object from the 
-	*	 text file and returns the object as a String
-	*	 array.
-	*	@return Returns a String array with a object
-	*	 as defined in the XML format (unparsed raw text)
-	**/
-	/*public String[] getObjectArray()
-	{
-		//Read <DPSerialization> 
-		//Read the object type and path
-		//Read all variables for object and initalize
-		//read </complexType>
-		//read </DPSerialization>
-
-		//put "good input" into array, just ignore bad imput
-
-		//increment counter for number of objects
-
 		return null;
-
 	}
-	*************************************************************/	
+
 }//End of class Deserialize
 //---------------------------------------------------------------------
