@@ -70,14 +70,7 @@ public class Deserialize
 				
 				if(lineIn != null)
 				{
-					if(i == 2)
-					{
-						//intVal = dTypes.DeserializeInt(lineIn);	
-					}
-					else
-					{
-						//System.out.println(lineIn);
-					}				
+					System.out.println(lineIn);			
 				}
 			}
 			catch(Exception e)

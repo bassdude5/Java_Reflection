@@ -6,9 +6,7 @@ import reflection.util.Debug;
 public class DeserializeTypes
 {
 	private final int errorVal = 3;
-	
 	private Debug debugClass;
-
 	private String	begRegex = "<.*\">";
 	private String	endRegex = "</.*>";
 
@@ -24,7 +22,7 @@ public class DeserializeTypes
 	*	This method is used to deserialize a int
 	*	 from its string format
 	*
-	*	@return returns the integer value from the string
+	*	@return Returns the integer value from the string
 	**/
 	public int DeserializeInt(String intIn)
 	{
@@ -37,74 +35,65 @@ public class DeserializeTypes
 	*	This method is used to deserialize a long 
 	*	 from its string format
 	*
-	*	@return 
+	*	@return Returns the parsed long value
 	**/
 	public long DeserializeLong(String longIn)
 	{
-		//  <myLong xsi:type="xsd:long">1212121</myLong>
-	/*
-		
-	*/
-		return 0;
+		return Long.valueOf(longIn);
 	}
 
 	/**
 	*	This method is used to deserialize a double 
 	*	 from its string format
 	*
-	*	@return 
+	*	@return Returns the parsed double value
 	**/
 	public double DeserializeDouble(String doubleIn)
 	{
-		//  <myDouble xsi:type="xsd:double">3.14</myDouble>
-		return 0;
+		return Double.parseDouble(doubleIn);
 	}
 
 	/**
 	*	This method is used to deserialize a string
 	*	 from its string format
 	*
-	*	@return 
+	*	@return Returns the trimmed string
 	**/
 	public String DeserializeString(String stringIn)
 	{
-		//  <myString xsi:type="xsd:string">Design Patterns</myString>
-		return null;
+		return stringIn.trim();
 	}
 
 	/**
 	*	This method is used to deserialize a char
 	*	 from its string format
 	*
-	*	@return 
+	*	@return Returns the parsed character value
 	**/
 	public char DeserializeChar(String charIn)
 	{
-		//  <myChar xsi:type="xsd:char">D</myChar>
-		return ' ';
+		return charIn.charAt(0);
 	}
 
 	/**
 	*	This method is used to deserialize a float
 	*	 from its string format
 	*
-	*	@return 
+	*	@return Returns the parsed float value
 	**/
 	public float DeserializeFloat(String floatIn)
 	{
-		//  <myFloatS xsi:type="xsd:float">314</myFloatS>
-		return 0;
+		return Float.valueOf(floatIn.trim()).floatValue();
 	}
 
 	/**
 	*	This method is used to deserialize a short
 	*	 from its string format
 	*
-	*	@return 
+	*	@return Returns the parsed short value
 	**/
-	public short DeserializeShort(String shortInt)
+	public short DeserializeShort(String shortIn)
 	{
-		//  <myShortS xsi:type="xsd:short">19</myShortS>
-		return 0;
+		return Short.parseShort(shortIn);
 	}
 }

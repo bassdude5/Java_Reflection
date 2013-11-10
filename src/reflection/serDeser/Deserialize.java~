@@ -70,14 +70,7 @@ public class Deserialize
 				
 				if(lineIn != null)
 				{
-					if(i == 2)
-					{
-						//intVal = dTypes.DeserializeInt(lineIn);	
-					}
-					else
-					{
-						//System.out.println(lineIn);
-					}				
+					System.out.println(lineIn);			
 				}
 			}
 			catch(Exception e)
@@ -140,7 +133,7 @@ public class Deserialize
 		//Checks to ensure there actually was a value
 		if(begIndex < endIndex && begIndex > 0)
 		{
-			result = inLine.substring(begIndex,endIndex);
+			result = lineIn.substring(begIndex,endIndex);
 		}
 
 		return result;
