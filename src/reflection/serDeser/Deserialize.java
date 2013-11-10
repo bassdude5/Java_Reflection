@@ -4,6 +4,7 @@ package reflection.serDeser;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
+import java.util.Vector;
 import reflection.serDeser.DeserializeTypes;
 //---------------------------------------------------------------------
 import java.util.regex.Matcher;
@@ -18,18 +19,20 @@ public class Deserialize
 	private Debug debugClass;
 	private BufferedReader br;
 	private DeserializeTypes dTypes;
+
 	//Regular expressions to get the class name
-	private final String startClassRegex = "";
-	private final String endClassRegex = "";
+	private final String startClassRegex = "<complexType xsi:type=\"";
+	private final String endClassRegex = "\">";
+	//Regular expressions to get the class member name
+	private final String startMemberNameRegex = "<";
+	private final String endMemberNameRegex = " xsi:type.*>.*</.*>";
 	//Regular expressions to get the type of the value
-	private final String startTypeRegex = "";
-	private final String endTypeRegex = "";
+	private final String startTypeRegex = "<.*xsi:type=\"xsd:";
+	private final String endTypeRegex = "\">.*</.*>";
 	//Regular expressions to get the value as a string
 	private final String startValueRegex = "<.*\">";
 	private final String endValueRegex = "</.*>";
-	//Regular expressions to get the class member name
-	private final String startMemberNameRegex = "";
-	private final String endMemberNameRegex = "";
+
 
 	/**
 	*	Class constructor
@@ -68,22 +71,62 @@ public class Deserialize
 	*	@return Returns an array of objects that was
 	*		 constructed from the input file
 	**/
-	public Object[] DeserializeFile() throws FileNotFoundException
+	public Vector<Class> DeserializeFile() throws FileNotFoundException
 	{
-		String lineIn = " ";
-		int i = 0;
-		int intVal = 0;
+		Vector<Class> objectsVector = new Vector<Class>();
+		String type;
+		String methodName;
 
+		String lineIn = " ";
 		while(lineIn != null)
 		{
 			try
 			{
 				lineIn = br.readLine();
-				
+
+				//Checks for start of object
 				if(lineIn != null)
 				{
-					System.out.println(lineIn);			
-				}
+					//Skip the first line of the object
+					// since it is <DPSerialization>
+					lineIn = br.readLine();
+
+					lineIn = parseValue(lineIn, startClassRegex,
+						endClassRegex);
+					try
+					{
+						objectsVector.add(Class.forName(lineIn));
+					}
+					catch(ClassNotFoundException e)
+					{
+						System.out.println("ERROR: Class unable"
+						+ " to be initialized!");
+						System.exit(errorVal);
+					}
+
+					//System.out.println(lineIn);
+
+					lineIn = br.readLine();
+					
+					//Read a new line as long as it isent the end
+					// of the object in the XML file
+					while(!lineIn.equals(" </complexType>"))
+					{
+						type = parseValue(lineIn, startTypeRegex,
+							endTypeRegex);
+						methodName = parseValue(lineIn,
+							startMemberNameRegex, endMemberNameRegex);
+						System.out.println(methodName + " has type: " + type);
+						lineIn = br.readLine();
+					}
+
+					//Reads the end tag
+					lineIn = br.readLine();
+					
+
+				}				
+
+
 			}
 			catch(Exception e)
 			{
@@ -91,12 +134,11 @@ public class Deserialize
 					+ " line from input file!");
 				System.exit(errorVal);
 			}
-			i++;
 		}
-	
-		System.out.println("intVal value: " + intVal);
 
-		return null;
+		//System.out.println(objectsVector.size());
+	
+		return objectsVector;
 	}
 
 	/**

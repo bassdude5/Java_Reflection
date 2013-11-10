@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import reflection.serDeser.Deserialize;
 import reflection.serDeser.Serialize;
+import java.util.Vector;
 //---------------------------------------------------------------------
 import reflection.util.MyAllTypesFirst;
 import reflection.util.MyAllTypesSecond;
@@ -70,8 +71,10 @@ public class Process
 	public Boolean runProgram() throws FileNotFoundException,
 		IOException
 	{
+		Vector<Class> objectsVector;
+
 		//Deserializes the file
-		deSerFile.DeserializeFile();
+		objectsVector = deSerFile.DeserializeFile();
 		
 		//Count the number of each object
 		if(debug.getDebugVal() == 0)

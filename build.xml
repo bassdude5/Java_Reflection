@@ -53,7 +53,7 @@
 	  <!-- Input Filename: -->
           <arg value="MyAllTypes.txt"/>
 	  <!-- Output Filename: -->
-	  <arg value="OutputFileName"/>
+	  <arg value="MyAllTypesCopy.txt"/>
 	  <!-- Debug Value: -->
 	  <arg value="0"/>
         </java>

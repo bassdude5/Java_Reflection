@@ -22,23 +22,6 @@ public class MyAllTypesFirst
 		
 	}
 	
-	/**
-	*	This method prints an instance of this object to the 
-	*	 passed BufferedWriter.
-	**/
-	public void serialize(BufferedWriter outFile) throws IOException
-	{
-		outFile.write("<DPSerialization>");
-		outFile.write(" <complexType xsi:type=\"reflection.util.MyAllTypesFirst\">");
-		outFile.write("  <myInt xsi:type=\"xsd:int\">" + myInt + "</myInt>");
-		outFile.write("  <myString xsi:type=\"xsd:string\">" + myString + "</myString>");
-		outFile.write("  <myDouble xsi:type=\"xsd:double\">" + myDouble + "</myDouble>");
-		outFile.write("  <myLong xsi:type=\"xsd:long\">" + myLong + "</myLong>");
-		outFile.write("  <myChar xsi:type=\"xsd:char\">" + myChar + "</myChar>");
-		outFile.write(" </complexType>");
-		outFile.write("</DPSerialization>");
-	}
-
 	@Override
 	public String toString()
 	{

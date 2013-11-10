@@ -22,17 +22,6 @@ public class MyAllTypesSecond
 
 	}
 
-	/**
-	*	This method prints an instance of this object to the 
-	*	 passed BufferedWriter.
-	**/
-	public void serialize(BufferedWriter outFile) throws IOException
-	{
-		/*outFile.write("");
-		outFile.write("");*/
-	
-	}
-
 	@Override
 	public String toString()
 	{

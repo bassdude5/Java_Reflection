@@ -57,7 +57,7 @@ public class Serialize
 	*@return Returns false if the object was unable to be
 	* serialized properly, else returns true
 	**/
-	private Boolean serObj(Object obj) throws IOException
+	private Boolean serializeObjject(Object obj) throws IOException
 	{
 		Boolean status = true;
 
