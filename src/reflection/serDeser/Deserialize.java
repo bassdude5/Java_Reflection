@@ -6,6 +6,9 @@ import java.io.FileReader;
 import java.io.FileNotFoundException;
 import reflection.serDeser.DeserializeTypes;
 //---------------------------------------------------------------------
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+//---------------------------------------------------------------------
 import reflection.util.Debug;
 //---------------------------------------------------------------------
 public class Deserialize
@@ -69,7 +72,7 @@ public class Deserialize
 				{
 					if(i == 2)
 					{
-						intVal = dTypes.DeserializeInt(lineIn);	
+						//intVal = dTypes.DeserializeInt(lineIn);	
 					}
 					else
 					{
@@ -98,10 +101,49 @@ public class Deserialize
 	*
 	*	@return Returns the value found as a string
 	**/
-	public String parseValue(String inLine, String regex1, 
+	public String parseValue(String lineIn, String regex1, 
 		String regex2)
 	{
-		return null;
+		Pattern pat;
+		Matcher match;
+		String result = "";
+		int begIndex = -1;
+		int endIndex = -1;
+
+		try
+		{
+			//Beginning tag parsing
+			pat = Pattern.compile(regex1);
+			match = pat.matcher(lineIn);
+			if(match.find())
+			{
+				begIndex = match.end();
+			}
+
+			//End tag parsing
+			pat = Pattern.compile(regex2);
+			match = pat.matcher(lineIn);
+			
+			if(match.find())
+			{
+				endIndex = match.start();
+			}	
+		}
+		catch(Exception e)
+		{
+			System.out.println("ERROR: attempted parse of" 
+				+ "string: \"" + lineIn +"\"" +
+				" failed!");
+			System.exit(errorVal);
+		}
+		
+		//Checks to ensure there actually was a value
+		if(begIndex < endIndex && begIndex > 0)
+		{
+			result = lineIn.substring(begIndex,endIndex);
+		}
+
+		return result;
 	}
 
 }//End of class Deserialize

@@ -1,9 +1,6 @@
 //---------------------------------------------------------------------
 package reflection.serDeser;
 //---------------------------------------------------------------------
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-//---------------------------------------------------------------------
 import reflection.util.Debug;
 //---------------------------------------------------------------------
 public class DeserializeTypes
@@ -11,13 +8,9 @@ public class DeserializeTypes
 	private final int errorVal = 3;
 	
 	private Debug debugClass;
-	private Pattern pat;
-	private Matcher match;
+
 	private String	begRegex = "<.*\">";
 	private String	endRegex = "</.*>";
-	private int begIndex;
-	private int endIndex;
-	private String result;
 
 	/**
 	*	This is the class constructor
@@ -35,44 +28,9 @@ public class DeserializeTypes
 	**/
 	public int DeserializeInt(String intIn)
 	{
-		result = "-1";
-		begIndex = -1;
-		endIndex = -1;
 
-		try
-		{
-			//Beginning tag parsing
-			pat = Pattern.compile(begRegex);
-			match = pat.matcher(intIn);
-			if(match.find())
-			{
-				begIndex = match.end();
-			}
 
-			//End tag parsing
-			pat = Pattern.compile(endRegex);
-			match = pat.matcher(intIn);
-			
-			if(match.find())
-			{
-				endIndex = match.start();
-			}	
-		}
-		catch(Exception e)
-		{
-			System.out.println("ERROR: attempted parse of" 
-				+ "string: \"" + intIn +"\"" +
-				" failed!");
-			System.exit(errorVal);
-		}
-		
-		//Checks to ensure there actually was a value
-		if(begIndex < endIndex && begIndex > 0)
-		{
-			result = intIn.substring(begIndex,endIndex);
-		}
-
-		return Integer.parseInt(result);
+		return Integer.parseInt(intIn);
 	}
 
 	/**
