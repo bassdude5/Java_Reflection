@@ -18,6 +18,18 @@ public class Deserialize
 	private Debug debugClass;
 	private BufferedReader br;
 	private DeserializeTypes dTypes;
+	//Regular expressions to get the class name
+	private final String startClassRegex = "";
+	private final String endClassRegex = "";
+	//Regular expressions to get the type of the value
+	private final String startTypeRegex = "";
+	private final String endTypeRegex = "";
+	//Regular expressions to get the value as a string
+	private final String startValueRegex = "<.*\">";
+	private final String endValueRegex = "</.*>";
+	//Regular expressions to get the class member name
+	private final String startMemberNameRegex = "";
+	private final String endMemberNameRegex;
 
 	/**
 	*	Class constructor

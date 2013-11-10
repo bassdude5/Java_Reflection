@@ -7,8 +7,6 @@ public class DeserializeTypes
 {
 	private final int errorVal = 3;
 	private Debug debugClass;
-	private String	begRegex = "<.*\">";
-	private String	endRegex = "</.*>";
 
 	/**
 	*	This is the class constructor
