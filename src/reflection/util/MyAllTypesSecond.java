@@ -4,6 +4,8 @@ package reflection.util;
 import java.io.BufferedWriter;
 import java.io.IOException;
 //---------------------------------------------------------------------
+import reflection.util.Debug;
+//---------------------------------------------------------------------
 public class MyAllTypesSecond
 {
 	private int myIntS;
@@ -12,14 +14,16 @@ public class MyAllTypesSecond
 	private short myShortS;
 	private char myChar;
 
+	private Debug debugVal;
+
 	private String myClassName = "MyAllTypesSecond";
 
 	/**
-	*	The null class constructor
+	*	The class constructor
 	**/
-	public MyAllTypesSecond()
+	public MyAllTypesSecond(Debug debugVal)
 	{
-
+		this.debugVal = debugVal;
 	}
 
 	@Override

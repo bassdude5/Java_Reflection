@@ -122,8 +122,6 @@ public class Deserialize
 
 					//Reads the end tag
 					lineIn = br.readLine();
-					
-
 				}				
 
 
