@@ -76,7 +76,7 @@ public class Process
 		objectsVector = deSerFile.DeserializeFile();
 		
 		//Count the number of each object
-		if(debug.getDebugVal() == 0)
+	/*	if(debug.getDebugVal() == 0)
 		{
 			int numType1 = 0;
 			int numType2 = 0;
@@ -95,7 +95,7 @@ public class Process
 				}
 			}
 		}
-		
+	*/	
 		//Open output file and error check
 		serFile = new Serialize(debug, outputFilename, 
 			objectsVector);

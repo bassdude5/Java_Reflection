@@ -74,9 +74,11 @@ public class Process
 	{
 		//Deserializes the file
 		objectsVector = deSerFile.DeserializeFile();
+		for(int i = 0; i < objectsVector.size(); i ++)
+			System.out.println(i + " " + objectsVector.elementAt(i).toString());
 		
 		//Count the number of each object
-		if(debug.getDebugVal() == 0)
+	/*	if(debug.getDebugVal() == 0)
 		{
 			int numType1 = 0;
 			int numType2 = 0;
@@ -95,7 +97,7 @@ public class Process
 				}
 			}
 		}
-		
+	*/	
 		//Open output file and error check
 		serFile = new Serialize(debug, outputFilename, 
 			objectsVector);
