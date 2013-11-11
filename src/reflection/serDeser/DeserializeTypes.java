@@ -24,8 +24,6 @@ public class DeserializeTypes
 	**/
 	public int DeserializeInt(String intIn)
 	{
-
-
 		return Integer.parseInt(intIn);
 	}
 

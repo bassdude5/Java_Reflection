@@ -22,13 +22,10 @@ public class Process
 	//Sets the exit value for errors
 	private static final int error_val = 1;
 
-	Debug debug;
-	Deserialize deSerFile;
-	Serialize serFile;
-
-	MyAllTypesFirst types1;
-	MyAllTypesSecond types2;
-
+	private Debug debug;
+	private Deserialize deSerFile;
+	private Serialize serFile;
+	private Vector<Object> objectsVector;
 
 	/**
 	*	Class constructor that parses all input and sets
@@ -57,22 +54,15 @@ public class Process
 
 		//Open input file and error check
 		deSerFile = new Deserialize(debug, inputFilename);
-		
-		//Open output file and error check
-		serFile = new Serialize(debug, outputFilename, 
-			types1, types2);
-
-		//FIXME: Add toString() methods to all classes
-
-
 	}
 
-	//Run the 
+	/**
+	*	This method is used to run the program
+	*	@return Returns true if the program executed correctly
+	**/
 	public Boolean runProgram() throws FileNotFoundException,
 		IOException
 	{
-		Vector<Class> objectsVector;
-
 		//Deserializes the file
 		objectsVector = deSerFile.DeserializeFile();
 		
@@ -82,6 +72,10 @@ public class Process
 			//Check & display unique # of class instances
 		}
 		
+		//Open output file and error check
+		serFile = new Serialize(debug, outputFilename, 
+			objectsVector);
+
 		if(serFile.SerializeAll() != true)
 		{
 			System.out.println("ERROR: Some objects may" +

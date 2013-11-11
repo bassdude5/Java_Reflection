@@ -4,6 +4,7 @@ package reflection.serDeser;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Vector;
 //---------------------------------------------------------------------
 import reflection.util.MyAllTypesFirst;
 import reflection.util.MyAllTypesSecond;
@@ -13,15 +14,18 @@ import reflection.util.Debug;
 public class Serialize
 {
 	private BufferedWriter out;
+	private Vector<Object> objectsVector;
 
 	/**
 	* Serialize class constructor
 	**/
 	public Serialize(Debug debugClass, String outputFilename, 
-		MyAllTypesFirst types1, MyAllTypesSecond types2) throws IOException
+		Vector<Object> objectsVector) throws IOException
 	{
 		out = new BufferedWriter(
-			new FileWriter(outputFilename));		
+			new FileWriter(outputFilename));	
+
+		this.objectsVector = objectsVector;	
 	}
 
 	/**
@@ -35,9 +39,9 @@ public class Serialize
 	{
 		Boolean status = true;
 
-		/*for(int i = 0; i < objects.length; i++)
+		for(int i = 0; i < objects.length; i++)
 		{
-			if(serObj(objects[i]) == false)
+			/*if(serObj(objects[i]) == false)
 			{
 				//Only returns false if all the objects 
 				// were not parsed correctly
@@ -45,8 +49,8 @@ public class Serialize
 	
 				//Sets the method to return false
 				status = false;
-			}
-		}*/		
+			}*/
+		}	
 
 		return status;
 	}
@@ -57,18 +61,16 @@ public class Serialize
 	*@return Returns false if the object was unable to be
 	* serialized properly, else returns true
 	**/
-	private Boolean serializeObjject(Object obj) throws IOException
+	private Boolean serializeObject(Object obj) throws IOException
 	{
 		Boolean status = true;
-
-		//Write the object out to the text file		
-		//return false if unable to serialize
 
 		//First serialized line of an object that always
 		// needs written, reguardless of object type
 		out.write("<DPSerialization> ");
 
 		//Should call methods from the serialize types class
+
 	
 		//Final two lines of an object that need to be written
 		out.write(" </complexType>");

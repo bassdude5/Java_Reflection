@@ -5,6 +5,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileNotFoundException;
 import java.util.Vector;
+import java.lang.reflect.Method;
 import reflection.serDeser.DeserializeTypes;
 //---------------------------------------------------------------------
 import java.util.regex.Matcher;
@@ -71,13 +72,25 @@ public class Deserialize
 	*	@return Returns an array of objects that was
 	*		 constructed from the input file
 	**/
-	public Vector<Class> DeserializeFile() throws FileNotFoundException
+	public Vector<Object> DeserializeFile() throws FileNotFoundException
 	{
-		Vector<Class> objectsVector = new Vector<Class>();
+		Vector<Object> objectsVector = new Vector<Object>();
+		Method dMet;
+		Method fMet;
+		Class cls;
+		Object obj;
 		String type;
+		String dTypeName;
 		String methodName;
-
+		String value;
 		String lineIn = " ";
+		//Class[] argC = new Class[1];
+
+		int i = 0;
+
+		Class dT = dTypes.getClass();
+
+
 		while(lineIn != null)
 		{
 			try
@@ -95,7 +108,10 @@ public class Deserialize
 						endClassRegex);
 					try
 					{
-						objectsVector.add(Class.forName(lineIn));
+						cls = Class.forName(lineIn);
+						obj = cls.newInstance();
+						objectsVector.add(obj);
+
 					}
 					catch(ClassNotFoundException e)
 					{
@@ -103,8 +119,6 @@ public class Deserialize
 						+ " to be initialized!");
 						System.exit(errorVal);
 					}
-
-					//System.out.println(lineIn);
 
 					lineIn = br.readLine();
 					
@@ -114,14 +128,45 @@ public class Deserialize
 					{
 						type = parseValue(lineIn, startTypeRegex,
 							endTypeRegex);
+						//Formats the type string for the method name
+						// in DeserializeTypes
+						type = type.substring(0,1).toUpperCase() + 
+							type.substring(1);
+						dTypeName = "Deserialize" + type;
+
 						methodName = parseValue(lineIn,
 							startMemberNameRegex, endMemberNameRegex);
-						System.out.println(methodName + " has type: " + type);
+
+						value = parseValue(lineIn, startValueRegex, 
+							endValueRegex);
+						try
+						{
+							dMet = dT.getDeclaredMethod(dTypeName,
+								String.class);
+						}
+						catch(NoSuchMethodException e)
+						{
+							System.out.println("ERROR: Type not defined" 
+								+ " in DeserializeTypes class");
+							System.exit(errorVal);
+						}
+
+						/*try
+						{
+							fMet = objectsVector.at(i).getDeclaredMethod(type, (type.toString()).class);		
+						}
+						catch(NoSuchMethodException e)
+						{
+							System.out.println("");
+							System.exit(errorVal);
+						}*/	
+
 						lineIn = br.readLine();
 					}
 
 					//Reads the end tag
 					lineIn = br.readLine();
+					i++;
 				}				
 
 
@@ -134,8 +179,6 @@ public class Deserialize
 			}
 		}
 
-		//System.out.println(objectsVector.size());
-	
 		return objectsVector;
 	}
 

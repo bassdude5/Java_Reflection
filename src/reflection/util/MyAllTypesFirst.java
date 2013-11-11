@@ -21,9 +21,9 @@ public class MyAllTypesFirst
 	/**
 	*	The class constructor
 	**/
-	public MyAllTypesFirst(Debug debugVal)
+	public MyAllTypesFirst()
 	{
-		this.debugVal = debugVal;
+
 	}
 	
 	@Override
@@ -63,6 +63,14 @@ public class MyAllTypesFirst
 		}*/
 
 		return true;
+	}
+
+	/**
+	*	This method is used to set the debug value
+	**/
+	public void setDebugVal(Debug debugVal)
+	{
+		this.debugVal = debugVal;
 	}
 
 	/**

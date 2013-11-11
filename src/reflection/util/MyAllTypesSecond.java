@@ -21,9 +21,9 @@ public class MyAllTypesSecond
 	/**
 	*	The class constructor
 	**/
-	public MyAllTypesSecond(Debug debugVal)
+	public MyAllTypesSecond()
 	{
-		this.debugVal = debugVal;
+
 	}
 
 	@Override
@@ -32,6 +32,14 @@ public class MyAllTypesSecond
 		return myClassName + ": myIntS = " + myIntS + ", myStringS = "
 			+ myStringS + ", myFloatS = " + myFloatS + ", myShortS = "
 			+ myShortS + ", myChar = " + myChar + ".";
+	}
+
+	/**
+	*	This method is used to set the debug value
+	**/
+	public void setDebugVal(Debug debugVal)
+	{
+		this.debugVal = debugVal;
 	}
 
 	public void setMyIntS(int myIntS)
