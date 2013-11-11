@@ -16,10 +16,11 @@ import reflection.util.Debug;
 public class Deserialize
 {
 	private final int errorVal = 2;
-
 	private Debug debugClass;
 	private BufferedReader br;
 	private DeserializeTypes dTypes;
+
+	private Map<String,Class> map1;
 
 	//Regular expressions to get the class name
 	private final String startClassRegex = "<complexType xsi:type=\"";

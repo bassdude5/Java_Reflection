@@ -35,18 +35,17 @@ public class Serialize
 	*@return Returns false if one or more objects were unable to 
 	* be parsed correctly
 	**/
-	public Boolean	SerializeAll() throws IOException
+	public Boolean SerializeAll() throws IOException
 	{
 		Boolean status = true;
 
-		for(int i = 0; i < objects.length; i++)
+		for(int i = 0; i < objectsVector.size(); i++)
 		{
-			/*if(serObj(objects[i]) == false)
+			/*if(serObj(objectVector.at(i)) == false)
 			{
 				//Only returns false if all the objects 
 				// were not parsed correctly
-				//i = objects.length;
-	
+
 				//Sets the method to return false
 				status = false;
 			}*/
@@ -62,14 +61,23 @@ public class Serialize
 	* serialized properly, else returns true
 	**/
 	private Boolean serializeObject(Object obj) throws IOException
-	{
+	{	
+		Class cls;
 		Boolean status = true;
 
 		//First serialized line of an object that always
 		// needs written, reguardless of object type
 		out.write("<DPSerialization> ");
+		
+		
+		
+		//cls = Class.forName(obj.getClassName());
 
-		//Should call methods from the serialize types class
+		/*Method[] methods = cls.getMethods();*/
+				
+
+
+
 
 	
 		//Final two lines of an object that need to be written

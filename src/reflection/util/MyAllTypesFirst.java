@@ -3,10 +3,11 @@ package reflection.util;
 //---------------------------------------------------------------------
 import java.io.BufferedWriter;
 import java.io.IOException;
+import java.io.Serializable;
 //---------------------------------------------------------------------
 import reflection.util.Debug;
 //---------------------------------------------------------------------
-public class MyAllTypesFirst
+public class MyAllTypesFirst implements Serializable
 {
 	private int myInt;
 	private String myString;
@@ -156,6 +157,15 @@ public class MyAllTypesFirst
 	public char getMyChar()
 	{	
 		return myChar;
+	}
+
+	/**
+	*	This method is used to get the class name
+	*	@return returns the class name
+	**/
+	public String getClassName()
+	{	
+		return myClassName;
 	}	
 }
 //---------------------------------------------------------------------
