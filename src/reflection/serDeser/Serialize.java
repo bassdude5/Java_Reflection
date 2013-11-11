@@ -13,6 +13,8 @@ import reflection.util.Debug;
 //---------------------------------------------------------------------
 public class Serialize
 {
+	private final int errorVal = 4;
+
 	private BufferedWriter out;
 	private Vector<Object> objectsVector;
 

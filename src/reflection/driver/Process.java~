@@ -17,10 +17,10 @@ public class Process
 	private static String inputFilename;
 	private static String outputFilename;
 
-	private int debug_val;
+	private int debugVal;
 
 	//Sets the exit value for errors
-	private static final int error_val = 1;
+	private static final int errorVal = 1;
 
 	private Debug debug;
 	private Deserialize deSerFile;
@@ -39,7 +39,7 @@ public class Process
 		{
 			System.out.println("ERROR: Invalid number of"
 				+ " command line arguments!");
-			System.exit(error_val);	
+			System.exit(errorVal);	
 		}
 
 		//Sets the input filename
@@ -47,10 +47,19 @@ public class Process
 
 		//Sets the output filename
 		outputFilename = args[1];
-
+		
+		debugVal = Integer.parseInt(args[2]);
+		
+		if(debugVal < 0 || debugVal > 5)
+		{
+			System.out.println("ERROR: Debug value passed to"
+			+ "program is out of range!");
+			System.exit(errorVal);
+		}
+		
 		//Initializes the debug class
 		debug = new Debug();
-		debug.setDebugVal(Integer.parseInt(args[2]));	
+		debug.setDebugVal(debugVal);	
 
 		//Open input file and error check
 		deSerFile = new Deserialize(debug, inputFilename);
@@ -69,7 +78,22 @@ public class Process
 		//Count the number of each object
 		if(debug.getDebugVal() == 0)
 		{
+			int numType1 = 0;
+			int numType2 = 0;
+
 			//Check & display unique # of class instances
+			for(int i = 0; i < objectsVector.size(); i++)
+			{
+				for(int j = 0; j < objectsVector.size(); j++)
+				{
+					if(objectsVector.get(i) == objectsVector.get(j)
+					&& i != j) 
+//&& objectsVector.get(i).getClassName().equals(objectsVector.get(j).getClassName()))
+					{
+						
+					} 					
+				}
+			}
 		}
 		
 		//Open output file and error check

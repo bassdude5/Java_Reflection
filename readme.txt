@@ -21,6 +21,17 @@ This program uses the following debug value scheme:
 2 - 
 3 - 
 4 -
+========================================================================
+Error Values:
+========================================================================
+The following are the possible (non-standard) error values that can
+be returned from this program:
+
+1 - Process class error
+2 - Deserialize class error
+3 - DeserializeTypes error
+4 - Serialize class error
+5 - SerailizeTypes class error
 
 ========================================================================
 Approach and Justifications:
@@ -28,10 +39,15 @@ Approach and Justifications:
 
 
 ========================================================================
+Slack days:
+========================================================================
+The number of slack days I have used so far is: 1
+
+========================================================================
 Contributions:
 ========================================================================
 Michael Welte:
-	-Entire project
+	-Entire projects
 
 ========================================================================
 
