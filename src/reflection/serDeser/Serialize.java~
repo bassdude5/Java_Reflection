@@ -74,20 +74,8 @@ public class Serialize
 		//cls = Class.forName(obj.getClassName());
 
 		/*Method[] methods = cls.getMethods();*/
-		
+				
 
-		//Should call methods from the serialize types class
-		/*try
-		{
-			dMet = dT.getDeclaredMethod(dTypeName,
-				String.class);
-		}
-		catch(NoSuchMethodException e)
-		{
-			System.out.println("ERROR: Type not defined" 
-				+ " in DeserializeTypes class");
-			System.exit(errorVal);
-		}*/
 
 
 

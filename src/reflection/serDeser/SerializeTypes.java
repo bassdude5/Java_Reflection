@@ -8,7 +8,7 @@ public class SerializeTypes
 	**/
 	public SerializeTypes()
 	{
-		//FIXME: Combine all the methods into one?
+
 	}
 		
 	/**
