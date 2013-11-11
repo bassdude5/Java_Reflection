@@ -1,14 +1,18 @@
 //---------------------------------------------------------------------
 package reflection.serDeser;
 //---------------------------------------------------------------------
+import reflection.util.Debug;
+//---------------------------------------------------------------------
 public class SerializeTypes
 {
+	private Debug debugVal;
+
 	/**
 	*	This is the class constructor
 	**/
-	public SerializeTypes()
+	public SerializeTypes(Debug debugVal)
 	{
-
+		this.debugVal = debugVal;
 	}
 		
 	/**
