@@ -115,7 +115,7 @@ public class Serialize
 					tmp = "string";
 				}
 
-				System.out.println(map1.get(tmp));	
+				//System.out.println(map1.get(tmp));	
 			
 				/*try
 				{
