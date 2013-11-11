@@ -14,6 +14,12 @@ public class SerializeTypes
 	{
 		this.debugVal = debugVal;
 	}
+
+	public String SerializeClassName()
+	{
+		return null;
+	}
+	
 		
 	/**
 	*	This method is used to serialize an int into

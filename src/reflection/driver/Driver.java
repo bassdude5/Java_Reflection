@@ -11,11 +11,12 @@ public class Driver
 	public static void main(String[] args) throws FileNotFoundException,
 		IOException
 	{
+		//Create a new instance of a process class
 		Process p1 = new Process(args);
+
+		//Run the process instance
 		p1.runProgram();
 
-		//Open output file and error check
-		
 		System.out.println("Driver finished execution");
 
 	}

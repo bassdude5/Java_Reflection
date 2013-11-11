@@ -186,12 +186,14 @@ public class Deserialize
 
 						try
 						{
-
 							fMet.invoke(obj, dMet.invoke(dTypes, value));
 						}
 						catch(Exception e)
 						{
-
+							System.out.println("ERROR: get method for"
+								+ " variable not intialized or"
+								+ " declared! ");
+							System.exit(errorVal);
 						}
 
 						lineIn = br.readLine();

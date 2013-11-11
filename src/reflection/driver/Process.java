@@ -69,13 +69,12 @@ public class Process
 	*	This method is used to run the program
 	*	@return Returns true if the program executed correctly
 	**/
-	public Boolean runProgram() throws FileNotFoundException,
+	public void runProgram() throws FileNotFoundException,
 		IOException
 	{
 		//Deserializes the file
 		objectsVector = deSerFile.DeserializeFile();
-		for(int i = 0; i < objectsVector.size(); i ++)
-			System.out.println(i + " " + objectsVector.elementAt(i).toString());
+
 		
 		//Count the number of each object
 	/*	if(debug.getDebugVal() == 0)
@@ -98,16 +97,18 @@ public class Process
 			}
 		}
 	*/	
+		//If the debug value is 2, this will print all the objects 
+		// that were parsed
+		if(debug.getDebugVal() == 2)
+		for(int i = 0; i < objectsVector.size(); i ++)
+		{
+			System.out.println(i + " " + objectsVector.elementAt(i).toString());
+		}
+
 		//Open output file and error check
 		serFile = new Serialize(debug, outputFilename, 
 			objectsVector);
 
-		if(serFile.SerializeAll() != true)
-		{
-			System.out.println("ERROR: Some objects may" +
-				" not have been serialized succesfully!");
-		}		
-
-		return true;
+		serFile.SerializeAll();
 	}
 }

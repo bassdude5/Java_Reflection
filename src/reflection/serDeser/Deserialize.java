@@ -186,12 +186,12 @@ public class Deserialize
 
 						try
 						{
-
 							fMet.invoke(obj, dMet.invoke(dTypes, value));
 						}
 						catch(Exception e)
 						{
-
+							System.out.println("ERROR: unknown method!");
+							System.exit(errorVal);
 						}
 
 						lineIn = br.readLine();

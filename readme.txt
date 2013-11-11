@@ -18,7 +18,7 @@ Debug Values:
 This program uses the following debug value scheme:
 0 - Prints out the results from the class equality check
 1 - Prints to stdout when a constructor is called
-2 - 
+2 - Prints all the objects read from the file to stdout
 3 - 
 4 -
 ========================================================================
