@@ -19,8 +19,6 @@ This program uses the following debug value scheme:
 0 - Prints out the results from the class equality check
 1 - Prints to stdout when a constructor is called
 2 - Prints all the objects read from the file to stdout
-3 - 
-4 -
 ========================================================================
 Error Values:
 ========================================================================
@@ -37,11 +35,25 @@ be returned from this program:
 Approach and Justifications:
 ========================================================================
 
+I decided that there was no logical reason to use an interface for the
+types classes since they only share 1 to 2 common methods, and it 
+really would not enforce much of a pattern.
+
+The process class I added, just to make the driver class super short 
+and basic. In addition this would mean that if you truely wanted to
+spawn more processes or threads you could simply implement a more 
+driver and then use the process class.
+
+I created a method that uses regular expressions to parse the data in
+the Deserialize class, and then used the DeserializeTypes class as a
+parsing class that will take in a string argument and just output 
+the parsed value. All the method calling was done with Reflection,
+and the classes were created using reflection as well.
 
 ========================================================================
 Slack days:
 ========================================================================
-The number of slack days I have used so far is: 1
+The number of slack days I have used so far is: 2
 
 ========================================================================
 Contributions:
@@ -50,4 +62,3 @@ Michael Welte:
 	-Entire projects
 
 ========================================================================
-
