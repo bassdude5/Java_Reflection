@@ -94,7 +94,8 @@ public class Serialize
 		out.write("<DPSerialization>\n");
 
 		//Creates an array of all the methods in the passed object
-		Method[] methods = (obj.getClass()).getMethods();
+		Class cls = obj.getClass();
+		Method[] methods = cls.getMethods();
 
 		//Iterates through all the methods found,
 		// only calling the neccesary getters
@@ -105,44 +106,24 @@ public class Serialize
 				&& !(mname.equals("getClassName")))
 
 			{
-				Class cls = obj.getClass();
-				
-				//System.out.println(method.getReturnType().toString());
-				
-				tmp = method.getReturnType().toString();
-				if(tmp.equals("class java.lang.String"))
-				{
-					tmp = "string";
-				}
+				tmp = mname.substring(3,4).toLowerCase() 
+					+ mname.substring(4);
 
-				//System.out.println(map1.get(tmp));	
-			
-				/*try
+				try
 				{
-					met = cls.getDeclaredMethod(mname, map1.get(tmp));	
-				}
-				catch(NoSuchMethodException e)
-				{
-					System.out.println("ERROR: get method for"
-						+ " variable not intialized or"
-						+ " declared! ");
-					System.exit(errorVal);
-				}*/
-
-				//Call method
-				/*try
-				{
-					System.out.println(method.invoke(null));
+					out.write("  <"+ tmp + " xsi:type=\"xsd:" + "TYPE" + "\">" + method.invoke(obj, (Object[])null) +
+					 "</" + tmp + ">\n");
 				}
 				catch(IllegalAccessException e)
 				{
-					System.out.println("ERROR: Invalid method!");
+					System.out.println("ERROR: Illegal access exception!");
 					System.exit(errorVal);
 				}
 				catch(InvocationTargetException e)
 				{
+					System.out.println("ERROR: Invalid invocation target!");
 					System.exit(errorVal);
-				}*/
+				}
 			}
 		}
 	
