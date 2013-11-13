@@ -7,11 +7,12 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Vector;
+import java.util.HashMap;
 import java.lang.reflect.Method;
 //---------------------------------------------------------------------
 import reflection.util.MyAllTypesFirst;
 import reflection.util.MyAllTypesSecond;
-import java.util.HashMap;
+import reflection.serDeser.SerializeTypes;
 //---------------------------------------------------------------------
 import reflection.util.Debug;
 //---------------------------------------------------------------------
@@ -23,6 +24,7 @@ public class Serialize
 	private BufferedWriter out;
 	private Vector<Object> objectsVector;
 	private HashMap<String,Class> map1;
+	private SerializeTypes sTypes;
 
 	/**
 	* Serialize class constructor
@@ -45,18 +47,8 @@ public class Serialize
 			System.exit(errorVal);
 		}
 
-		this.objectsVector = objectsVector;	
-
-		//Creates a new hashmap that is used in the DeserializeFile
-		// method.
-		map1 = new HashMap<String, Class>();
-		map1.put("int", int.class);
-		map1.put("string", String.class);
-		map1.put("double", double.class);
-		map1.put("long", long.class);
-		map1.put("char", char.class);
-		map1.put("float", float.class);
-		map1.put("short", short.class);
+		this.objectsVector = objectsVector;
+		sTypes = new SerializeTypes(debugClass);	
 	}
 
 	/**
@@ -106,7 +98,7 @@ public class Serialize
 			{
 				try
 				{
-					
+					out.write(sTypes.SerializeClassName((String)method.invoke(obj, (Object[])null)));	
 				}
 				catch(Exception e)
 				{
@@ -122,12 +114,12 @@ public class Serialize
 				tmp = mname.substring(3,4).toLowerCase() 
 					+ mname.substring(4);
 
-				try
+				/*try
 				{
-					out.write();
+					//out.write();
 
-					/*out.write("  <"+ tmp + " xsi:type=\"xsd:" + "TYPE" + "\">" + method.invoke(obj, (Object[])null) +
-					 "</" + tmp + ">\n");*/
+					out.write("  <"+ tmp + " xsi:type=\"xsd:" + "TYPE" + "\">" +
+					 method.invoke(obj, (Object[])null) + "</" + tmp + ">\n");
 				}
 				catch(IllegalAccessException e)
 				{
@@ -138,7 +130,7 @@ public class Serialize
 				{
 					System.out.println("ERROR: Invalid invocation target!");
 					System.exit(errorVal);
-				}
+				}*/
 			}
 		}
 	

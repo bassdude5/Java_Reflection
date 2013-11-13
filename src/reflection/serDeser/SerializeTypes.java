@@ -25,7 +25,8 @@ public class SerializeTypes
 	**/
 	public String SerializeClassName(String className)
 	{
-		return "<complexType xsi:type=\"" + className + "\">";
+		return " <complexType xsi:type=\"reflection.util." +
+		 className + "\">\n";
 	}
 	
 	/**
@@ -36,8 +37,8 @@ public class SerializeTypes
 	**/
 	public String SerializeInt(String name, int intIn)
 	{
-		return "<"+ name + " xsi:type=\"xsd:int\">" +
-		 intIn + "</" + name + ">";
+		return "  <"+ name + " xsi:type=\"xsd:int\">" +
+		 intIn + "</" + name + ">\n";
 	}
 	
 	/**
@@ -48,8 +49,8 @@ public class SerializeTypes
 	**/
 	public String SerializeLong(String name, long longIn)
 	{
-		return "<"+ name + " xsi:type=\"xsd:long\">" +
-		 longIn + "</" + name + ">";
+		return "  <"+ name + " xsi:type=\"xsd:long\">" +
+		 longIn + "</" + name + ">\n";
 	}
 
 	/**
@@ -60,8 +61,8 @@ public class SerializeTypes
 	**/
 	public String SerializeDouble(String name, double doubleIn)
 	{
-		return "<"+ name + " xsi:type=\"xsd:double\">" +
-		 doubleIn + "</" + name + ">";
+		return "  <"+ name + " xsi:type=\"xsd:double\">" +
+		 doubleIn + "</" + name + ">\n";
 	}
 
 	/**
@@ -72,8 +73,8 @@ public class SerializeTypes
 	**/
 	public String SerializeString(String name, String stringIn)
 	{
-		return "<"+ name + " xsi:type=\"xsd:string\">" +
-		 stringIn + "</" + name + ">";
+		return "  <"+ name + " xsi:type=\"xsd:string\">" +
+		 stringIn + "</" + name + ">\n";
 	}
 
 	/**
@@ -84,8 +85,8 @@ public class SerializeTypes
 	**/
 	public String SerializeChar(String name, char charIn)
 	{
-		return "<"+ name + " xsi:type=\"xsd:char\">" +
-		 charIn + "</" + name + ">";
+		return "  <"+ name + " xsi:type=\"xsd:char\">" +
+		 charIn + "</" + name + ">\n";
 	}
 
 	/**
@@ -96,8 +97,8 @@ public class SerializeTypes
 	**/
 	public String SerializeFloat(String name, float floatIn)
 	{
-		return "<"+ name + " xsi:type=\"xsd:float\">" +
-		 floatIn + "</" + name + ">";
+		return "  <"+ name + " xsi:type=\"xsd:float\">" +
+		 floatIn + "</" + name + ">\n";
 	}
 
 	/**
@@ -108,8 +109,8 @@ public class SerializeTypes
 	**/
 	public String SerializeShort(String name, short shortIn)
 	{
-		return "<"+ name + " xsi:type=\"xsd:short\">" +
-		 shortIn + "</" + name + ">";
+		return "  <"+ name + " xsi:type=\"xsd:short\">" +
+		 shortIn + "</" + name + ">\n";
 	}
 
 }
