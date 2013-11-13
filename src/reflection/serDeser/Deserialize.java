@@ -190,7 +190,8 @@ public class Deserialize
 						}
 						catch(Exception e)
 						{
-							System.out.println("ERROR: unknown method!");
+							System.out.println("ERROR: unable to invoke"
+							+ " method!");
 							System.exit(errorVal);
 						}
 

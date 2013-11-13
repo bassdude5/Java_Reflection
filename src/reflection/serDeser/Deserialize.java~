@@ -190,9 +190,8 @@ public class Deserialize
 						}
 						catch(Exception e)
 						{
-							System.out.println("ERROR: get method for"
-								+ " variable not intialized or"
-								+ " declared! ");
+							System.out.println("ERROR: unable to invoke
+							+ " method!");
 							System.exit(errorVal);
 						}
 

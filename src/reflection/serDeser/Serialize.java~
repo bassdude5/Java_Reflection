@@ -80,7 +80,9 @@ public class Serialize
 	private void serializeObject(Object obj) throws IOException
 	{	
 		Method met = null;
-		String tmp = null;
+		String getMetName = null;
+		String serMethodName = null;
+		Class retType;
 		//First serialized line of an object that always
 		// needs written, reguardless of object type
 		out.write("<DPSerialization>\n");
@@ -88,6 +90,9 @@ public class Serialize
 		//Creates an array of all the methods in the passed object
 		Class cls = obj.getClass();
 		Method[] methods = cls.getMethods();
+		Method serMeth;
+		Object serParams;
+		Class serClass = sTypes.getClass();
 
 		//Iterates through all the methods found,
 		// only calling the neccesary getters
@@ -111,26 +116,48 @@ public class Serialize
 				&& !(mname.equals("getClassName")))
 
 			{
-				tmp = mname.substring(3,4).toLowerCase() 
+				//Reformats the variable name to the proper output
+				// format
+				getMetName = mname.substring(3,4).toLowerCase() 
 					+ mname.substring(4);
 
-				/*try
-				{
-					//out.write();
+				//Finds the return type of the getter method 
+				// so the code can reflexively call the appropriate
+				// SerializeTypes method
+				retType = method.getReturnType();
 
-					out.write("  <"+ tmp + " xsi:type=\"xsd:" + "TYPE" + "\">" +
-					 method.invoke(obj, (Object[])null) + "</" + tmp + ">\n");
-				}
-				catch(IllegalAccessException e)
+				serMethodName = retType.toString();
+
+				if(serMethodName.equals("class java.lang.String"))
 				{
-					System.out.println("ERROR: Illegal access exception!");
+					serMethodName = "String";
+				}
+				serMethodName = "Serialize" + 
+					serMethodName.substring(0,1).toUpperCase()
+					+ serMethodName.substring(1);
+		
+				try
+				{
+					serMeth = serClass.getDeclaredMethod(serMethodName, new Class[] {String.class, retType});
+					out.write(serMeth.invoke(sTypes, getMetName, method.invoke(obj, (Object[])null)));
+
+					//System.out.println(method.invoke(obj, (Object[])null));
+					//out.write("  <"+ tmp + " xsi:type=\"xsd:" + "TYPE" + "\">" +
+					// method.invoke(obj, (Object[])null) + "</" + tmp + ">\n");
+
+					//out.write();
+				}
+				catch(NoSuchMethodException e)
+				{
+					System.out.println("ERROR: Method for type does not exist" + 
+						" in SerializeTypes class!");
 					System.exit(errorVal);
 				}
-				catch(InvocationTargetException e)
+				catch(Exception e)
 				{
-					System.out.println("ERROR: Invalid invocation target!");
+					System.out.println("ERROR: unable to call method!");
 					System.exit(errorVal);
-				}*/
+				}
 			}
 		}
 	
