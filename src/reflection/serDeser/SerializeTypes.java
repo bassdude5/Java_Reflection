@@ -17,13 +17,17 @@ public class SerializeTypes
 
 	/**
 	*	This method is used to serialize the class name
+	*	NOTE: This method assumes the proper class name
+	*		is passed to this method and does NO
+	*			checking on the value
+	*
+	*	@return This method returns the serialized classe3
 	**/
-	public String SerializeClassName()
+	public String SerializeClassName(String className)
 	{
-		return null;
+		return "<complexType xsi:type=\"" + className + "\">";
 	}
 	
-		
 	/**
 	*	This method is used to serialize an int into
 	*	 a formatted string.	

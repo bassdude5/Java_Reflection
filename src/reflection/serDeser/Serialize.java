@@ -102,7 +102,20 @@ public class Serialize
 		for (Method method:methods)
 		{
 			String mname = method.getName();
-			if(mname.startsWith("get") && !(mname.equals("getClass")) 
+			if(mname.equals("getClassName"))
+			{
+				try
+				{
+					
+				}
+				catch(Exception e)
+				{
+					System.out.println("ERROR: Unable to write class" +
+					 "link to output file!");
+					System.exit(errorVal);
+				}
+			}
+			else if(mname.startsWith("get") && !(mname.equals("getClass")) 
 				&& !(mname.equals("getClassName")))
 
 			{
@@ -111,8 +124,10 @@ public class Serialize
 
 				try
 				{
-					out.write("  <"+ tmp + " xsi:type=\"xsd:" + "TYPE" + "\">" + method.invoke(obj, (Object[])null) +
-					 "</" + tmp + ">\n");
+					out.write();
+
+					/*out.write("  <"+ tmp + " xsi:type=\"xsd:" + "TYPE" + "\">" + method.invoke(obj, (Object[])null) +
+					 "</" + tmp + ">\n");*/
 				}
 				catch(IllegalAccessException e)
 				{
