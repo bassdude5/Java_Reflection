@@ -17,13 +17,19 @@ Debug Values:
 ========================================================================
 This program uses the following debug value scheme:
 0 - Prints out the results from the class equality check
-1 - Prints to stdout when a constructor is called
-2 - Prints all the objects read from the file to stdout
+1 - Does not print the equality check results
+
+I did not add any other debug values, though I included the option to pass
+the debug value into most of the class constructors.
+I felt that because I used extensive amounts of try catch blocks and error
+checking that for the most part my code would not need debug values.
+
+
 ========================================================================
 Error Values:
 ========================================================================
 The following are the possible (non-standard) error values that can
-be returned from this program:
+be returned from this program if there is a error thrown:
 
 1 - Process class error
 2 - Deserialize class error
@@ -49,6 +55,9 @@ the Deserialize class, and then used the DeserializeTypes class as a
 parsing class that will take in a string argument and just output 
 the parsed value. All the method calling was done with Reflection,
 and the classes were created using reflection as well.
+
+All of the serialization is done using reflection, and should output
+a exact copy of the original file passed in.
 
 ========================================================================
 Slack days:

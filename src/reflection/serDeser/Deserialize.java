@@ -171,14 +171,14 @@ public class Deserialize
 							System.exit(errorVal);
 						}
 
-						//Tries to get the declared method in 
+						//Tries to get the declared method
 						try
 						{
 							fMet = cls.getDeclaredMethod(methodName, map1.get(type));	
 						}
 						catch(NoSuchMethodException e)
 						{
-							System.out.println("ERROR: get method for"
+							System.out.println("ERROR: method for"
 								+ " variable not intialized or"
 								+ " declared! ");
 							System.exit(errorVal);
@@ -203,7 +203,6 @@ public class Deserialize
 					objectsVector.add(obj);
 				}				
 
-
 			}
 			catch(Exception e)
 			{
@@ -213,6 +212,16 @@ public class Deserialize
 			}
 		}
 
+		try
+		{
+			br.close();
+		}
+		catch(Exception e)
+		{
+			System.out.println("ERROR: Unable to close input file!");
+			System.exit(errorVal);
+		}
+		
 		return objectsVector;
 	}
 
@@ -228,43 +237,44 @@ public class Deserialize
 	{
 		Pattern pat;
 		Matcher match;
-		String result = "";
+		String result = null;
 		int begIndex = -1;
 		int endIndex = -1;
-
-		try
+		if(lineIn != null)
 		{
-			//Beginning tag parsing
-			pat = Pattern.compile(regex1);
-			match = pat.matcher(lineIn);
-			if(match.find())
+			try
 			{
-				begIndex = match.end();
-			}
+				//Beginning tag parsing
+				pat = Pattern.compile(regex1);
+				match = pat.matcher(lineIn);
+				if(match.find())
+				{
+					begIndex = match.end();
+				}
 
-			//End tag parsing
-			pat = Pattern.compile(regex2);
-			match = pat.matcher(lineIn);
+				//End tag parsing
+				pat = Pattern.compile(regex2);
+				match = pat.matcher(lineIn);
 			
-			if(match.find())
+				if(match.find())
+				{
+					endIndex = match.start();
+				}	
+			}
+			catch(Exception e)
 			{
-				endIndex = match.start();
-			}	
-		}
-		catch(Exception e)
-		{
-			System.out.println("ERROR: attempted parse of" 
-				+ "string: \"" + lineIn +"\"" +
-				" failed!");
-			System.exit(errorVal);
-		}
+				System.out.println("ERROR: attempted parse of" 
+					+ "string: \"" + lineIn +"\"" +
+					" failed!");
+				System.exit(errorVal);
+			}
 		
-		//Checks to ensure there actually was a value
-		if(begIndex < endIndex && begIndex > 0)
-		{
-			result = lineIn.substring(begIndex,endIndex);
+			//Checks to ensure there actually was a value
+			if(begIndex < endIndex && begIndex > 0)
+			{
+				result = lineIn.substring(begIndex,endIndex);
+			}
 		}
-
 		return result;
 	}
 

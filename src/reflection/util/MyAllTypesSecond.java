@@ -13,8 +13,7 @@ public class MyAllTypesSecond implements Serializable
 	private String myStringS;
 	private float myFloatS;
 	private short myShortS;
-	private char myChar;
-
+	private char myCharS;
 	private Debug debugVal;
 
 	private String myClassName = "MyAllTypesSecond";
@@ -27,12 +26,16 @@ public class MyAllTypesSecond implements Serializable
 
 	}
 
+	/**
+	*	Overridden toString method
+	*	@return Returns a string describing the class
+	**/
 	@Override
 	public String toString()
 	{
 		return myClassName + ": myIntS = " + myIntS + ", myStringS = "
 			+ myStringS + ", myFloatS = " + myFloatS + ", myShortS = "
-			+ myShortS + ", myChar = " + myChar + ".";
+			+ myShortS + ", myCharS = " + myCharS + ".";
 	}
 
 	/**
@@ -78,9 +81,9 @@ public class MyAllTypesSecond implements Serializable
 	/**
 	*	This method is used to set the variable myChar
 	**/
-	public void setMyChar(char myChar)
+	public void setMyCharS(char myCharS)
 	{
-		this.myChar = myChar;
+		this.myCharS = myCharS;
 	}
 
 	/**
@@ -105,7 +108,7 @@ public class MyAllTypesSecond implements Serializable
 	*	This method is used to get the variable myFloatS
 	*	@return returns the float "myFloatS"
 	**/
-	public float getMyFLoatS()
+	public float getMyFloatS()
 	{
 		return myFloatS;
 	}
@@ -123,9 +126,9 @@ public class MyAllTypesSecond implements Serializable
 	*	This method is used to get the variable myChar
 	*	@return returns the char "myChar"
 	**/
-	public char getMyChar()
+	public char getMyCharS()
 	{
-		return myChar;
+		return myCharS;
 	}
 
 	/**

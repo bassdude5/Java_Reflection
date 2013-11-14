@@ -27,6 +27,10 @@ public class MyAllTypesFirst implements Serializable
 
 	}
 	
+	/**
+	*	Overridden toString method
+	*	@return Returns a string describing the class
+	**/
 	@Override
 	public String toString()
 	{
@@ -47,23 +51,19 @@ public class MyAllTypesFirst implements Serializable
 		{
 			return false;
 		}
-
-		//Checks if the classes are instances of the same class
-		if (this.getClass() != passedObj.getClass())
+		if(passedObj == this)
 		{
-			return false;
+			return true;
 		}
-
-		/*if (this.myInt != passedObj.getMyInt()) ||
-		/*this.myString != ((Simple)passedObj).myString ||
-		this.myDouble != ((Simple)passedObj).myDouble ||
-		this.myLong != ((Simple)passedObj).myLong ||
-		this.myChar != ((Simple)passedObj).myChar)
+		if(!(passedObj instanceof MyAllTypesFirst))
 		{
-			return false;
-		}*/
+			return false;	
+		}
+		
 
-		return true;
+
+
+		return false;
 	}
 
 	/**

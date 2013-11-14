@@ -24,7 +24,17 @@ public class DeserializeTypes
 	**/
 	public int DeserializeInt(String intIn)
 	{
-		return Integer.parseInt(intIn);
+		int returnVal = 0;
+		try
+		{
+			returnVal = Integer.parseInt(intIn);
+		}
+		catch(Exception e)
+		{
+			System.out.println("ERROR: Unable to parse int!");
+			System.exit(errorVal);
+		}
+		return returnVal;
 	}
 
 	/**
@@ -35,7 +45,17 @@ public class DeserializeTypes
 	**/
 	public long DeserializeLong(String longIn)
 	{
-		return Long.valueOf(longIn);
+		long returnVal = 0;
+		try
+		{
+			returnVal = Long.valueOf(longIn);
+		}
+		catch(Exception e)
+		{
+			System.out.println("ERROR: Unable to parse long!");
+			System.exit(errorVal);
+		}
+		return returnVal;
 	}
 
 	/**
@@ -45,8 +65,18 @@ public class DeserializeTypes
 	*	@return Returns the parsed double value
 	**/
 	public double DeserializeDouble(String doubleIn)
-	{
-		return Double.parseDouble(doubleIn);
+	{		
+		double returnVal = 0;
+		try
+		{
+			returnVal = Double.parseDouble(doubleIn);
+		}
+		catch(Exception e)
+		{
+			System.out.println("ERROR: Unable to parse double!");
+			System.exit(errorVal);
+		}
+		return returnVal;
 	}
 
 	/**
@@ -57,7 +87,17 @@ public class DeserializeTypes
 	**/
 	public String DeserializeString(String stringIn)
 	{
-		return stringIn.trim();
+		String returnVal = null;
+		try
+		{
+			returnVal = stringIn.trim();
+		}
+		catch(Exception e)
+		{
+			System.out.println("ERROR: Unable to parse String!");
+			System.exit(errorVal);
+		}
+		return returnVal;
 	}
 
 	/**
@@ -68,7 +108,17 @@ public class DeserializeTypes
 	**/
 	public char DeserializeChar(String charIn)
 	{
-		return charIn.charAt(0);
+		char returnVal = 0;
+		try
+		{
+			returnVal = charIn.charAt(0);
+		}
+		catch(Exception e)
+		{
+			System.out.println("ERROR: Unable to parse char!");
+			System.exit(errorVal);
+		}
+		return returnVal;
 	}
 
 	/**
@@ -79,7 +129,18 @@ public class DeserializeTypes
 	**/
 	public float DeserializeFloat(String floatIn)
 	{
-		return Float.valueOf(floatIn.trim()).floatValue();
+		float returnVal = 0;
+		try
+		{
+			returnVal = Float.valueOf(floatIn.trim()).floatValue();
+		}
+		catch(Exception e)
+		{
+			System.out.println("ERROR: Unable to parse float!");
+			System.exit(errorVal);
+		}
+		return returnVal;
+
 	}
 
 	/**
@@ -90,6 +151,16 @@ public class DeserializeTypes
 	**/
 	public short DeserializeShort(String shortIn)
 	{
-		return Short.parseShort(shortIn);
+		short returnVal = 0;
+		try
+		{
+			returnVal = Short.parseShort(shortIn);
+		}
+		catch(Exception e)
+		{
+			System.out.println("ERROR: Unable to parse short!");
+			System.exit(errorVal);
+		}
+		return returnVal;
 	}
 }

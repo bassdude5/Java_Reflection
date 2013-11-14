@@ -141,11 +141,6 @@ public class Serialize
 					serMeth = serClass.getDeclaredMethod(serMethodName, new Class[] {String.class, retType});
 					out.write(serMeth.invoke(sTypes, getMetName, method.invoke(obj, (Object[])null)).toString());
 
-					//System.out.println(method.invoke(obj, (Object[])null));
-					//out.write("  <"+ tmp + " xsi:type=\"xsd:" + "TYPE" + "\">" +
-					// method.invoke(obj, (Object[])null) + "</" + tmp + ">\n");
-
-					//out.write();
 				}
 				catch(NoSuchMethodException e)
 				{
