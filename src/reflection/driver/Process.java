@@ -81,13 +81,31 @@ public class Process
 		{
 			int numType1 = 0;
 			int numType2 = 0;
+			Boolean bln = true;
 
 			//Check & display unique # of class instances
 			for(int i = 0; i < objectsVector.size(); i++)
 			{
-				for(int j = 0; j < objectsVector.size(); j++)
+				for(int j = i+1; j < objectsVector.size(); j++)
 				{
+					if(objectsVector.elementAt(i).equals(objectsVector.elementAt(i)))
+					{
+						bln = false;
+					}
 				}
+				if(bln == true)
+				{
+					//There is a unique instance
+					if(objectsVector.elementAt(i) instanceof MyAllTypesFirst)
+					{
+						numType1++;
+					}
+					if(objectsVector.elementAt(i) instanceof MyAllTypesSecond)
+					{
+						numType2++;
+					}
+				}
+				bln = true;
 			}
 
 			System.out.println("MyAllTypesFirst Unique Instances: " + numType1);

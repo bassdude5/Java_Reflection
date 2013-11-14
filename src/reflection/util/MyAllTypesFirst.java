@@ -41,8 +41,7 @@ public class MyAllTypesFirst implements Serializable
 
 	
 	/**
-	*	Code partially taken from:
-	*	http://users.csc.calpoly.edu/~kmammen/documents/java/howToOverrideEquals.html
+	*	This is the overidden equals method
 	**/
 	public boolean equals(Object passedObj)
 	{
@@ -51,17 +50,29 @@ public class MyAllTypesFirst implements Serializable
 		{
 			return false;
 		}
-		if(passedObj == this)
-		{
-			return true;
-		}
+
+		//Checks to ensure the class is an instance of this class
 		if(!(passedObj instanceof MyAllTypesFirst))
 		{
 			return false;	
 		}
+
+		if(passedObj == this)
+		{
+			return true;
+		}
+
 		
+		MyAllTypesFirst cls = (MyAllTypesFirst)passedObj;
 
-
+		if((this.myChar == cls.getMyChar()) && 
+			(this.myInt == cls.getMyInt()) &&
+			(this.myString.equals(cls.getMyString())) &&
+			(this.myDouble == cls.getMyDouble()) &&
+			(this.myLong == cls.getMyLong()))
+		{
+			return true;
+		}
 
 		return false;
 	}

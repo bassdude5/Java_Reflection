@@ -39,6 +39,42 @@ public class MyAllTypesSecond implements Serializable
 	}
 
 	/**
+	*	This is the overidden equals method
+	**/
+	public boolean equals(Object passedObj)
+	{
+		//Checks if the object exists
+		if (passedObj == null)
+		{
+			return false;
+		}
+
+		//Checks to ensure the class is an instance of this class
+		if(!(passedObj instanceof MyAllTypesSecond))
+		{
+			return false;	
+		}
+
+		if(passedObj == this)
+		{
+			return true;
+		}
+		
+		MyAllTypesSecond cls = (MyAllTypesSecond)passedObj;
+
+		if((this.myCharS == cls.getMyCharS()) && 
+			(this.myIntS == cls.getMyIntS()) &&
+			(this.myStringS.equals(cls.getMyStringS())) &&
+			(this.myFloatS == cls.getMyFloatS()) &&
+			(this.myShortS == cls.getMyShortS()))
+		{
+			return true;
+		}
+
+		return false;
+	}
+
+	/**
 	*	This method is used to set the debug value
 	**/
 	public void setDebugVal(Debug debugVal)
